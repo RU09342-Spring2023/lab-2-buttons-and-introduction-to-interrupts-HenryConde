@@ -3,7 +3,7 @@
  *
  *  Created on: Jan 30, 2023
  *      Author: Russell Trafford
- *      Version: 1.0
+ *      Version: 1.3
  *
  *      This example will show you how to configure an Interrupt and Interrupt Service Routine.
  *
@@ -12,6 +12,8 @@
  *      it should move to the Green LED. If the button is pressed again, it should move to the Red LED again.
  *
  *      There have been some "todo" notes which can be helpful in finding things to change in the code.
+ *
+ *      by: Henry Conde
  */
 
 
