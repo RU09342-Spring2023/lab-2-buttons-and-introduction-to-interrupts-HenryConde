@@ -35,6 +35,8 @@ int main(void)
     P2REN |= BIT3;                          // P2.3 pull-up register enable
     P2IES &= ~BIT3;                         // P2.3 Low --> High edge
     P2IE |= BIT3;                           // P2.3 interrupt enabled
+    P6OUT &= ~BIT6;
+    P6DIR |=BIT6;
 
     // Disable the GPIO power-on default high-impedance mode
     // to activate previously configured port settings
@@ -47,8 +49,11 @@ int main(void)
     while(1)
     {
         // @TODO You will need to modify this code to change between blinking the Red LED or the Green LED
-        if (ToggleEnable)
-            P1OUT ^= BIT0;                  // P1.0 = toggle
+        if (ToggleEnable){
+            P6OUT ^= BIT6;                  // P1.0 = toggle
+            if((P6OUT & BIT6) == 1)
+                P1OUT ^= BIT0;
+            }
         else
             P1OUT &= ~BIT0;                 // Set P1.0 to 0
         __delay_cycles(100000);
