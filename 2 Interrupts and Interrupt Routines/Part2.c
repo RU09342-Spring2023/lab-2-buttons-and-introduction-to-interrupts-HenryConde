@@ -49,15 +49,29 @@ int main(void)
     while(1)
     {
         // @TODO You will need to modify this code to change between blinking the Red LED or the Green LED
-        if (ToggleEnable){
-            P6OUT ^= BIT6;                  // P1.0 = toggle
-            if((P6OUT & BIT6) == 1)
-                P1OUT ^= BIT0;
+        /*
+         * if (button pressed) {
+            toggle green led
+            set red led = 0
             }
-        else
-            P1OUT &= ~BIT0;                 // Set P1.0 to 0
+            else {
+            toggle red led
+            set green led = 0
+            }
+         *
+         */
+        if (ToggleEnable)
+        {
+            P6OUT ^= BIT6;                  // P1.0 = toggle
+            P1OUT &= ~BIT0;
+        }
+        else{
+            P1OUT ^= BIT0;                 // Set P1.0 to 0
+            P6OUT &= ~BIT6;
+        }
         __delay_cycles(100000);
     }
+
 }
 
 // Port 2 interrupt service routine
